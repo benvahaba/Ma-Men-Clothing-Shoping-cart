@@ -1,0 +1,21 @@
+.product {
+  width: 20vw;
+  height: auto;
+  padding: 3rem;
+  margin-bottom: 5rem;
+
+  text-align: center;
+  border-radius: 3%;
+  display: inline-block;
+
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.35);
+  &__image {
+    max-width: 95%;
+    max-height: 95%;
+    display: block;
+    border-radius: 3%;
+  }
+  :hover {
+    transform: scale(1.5);
+  }
+}

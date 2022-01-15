@@ -1,0 +1,21 @@
+.toolbar {
+  display: flex;
+  flex: 1 1 auto;
+
+  background-color: $color_primary;
+
+  justify-content: space-between;
+
+  box-shadow: 0 0.7rem 0.5rem $containers_shadow;
+
+  &__item {
+    background-color: $color_primary;
+    padding: 3rem;
+    margin: 3rem;
+
+    &-pic {
+      width: 5rem;
+      display: block;
+    }
+  }
+}
