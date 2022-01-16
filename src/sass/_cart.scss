@@ -8,7 +8,7 @@
 .cart {
   &__header {
     height: 10vh;
-    background-color: $color_primary_light;
+    background-color: $color_primary;
     &-logo {
       display: block;
       margin-left: auto;
@@ -18,10 +18,14 @@
   }
   &__body {
     // height: 0vh;
+    // opacity: 0;
     height: 65vh;
-    transition: all 0.2s;
+    background-color: white;
+
+    transition: all 0.5s;
   }
   :hover > &__body {
+    // opacity: 1;
     height: 65vh;
   }
 }

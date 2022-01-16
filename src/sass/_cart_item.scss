@@ -1,5 +1,9 @@
 .cart_item {
   padding: 3%;
+  border-radius: 5%;
+  padding: 3%;
+  margin: 3%;
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
 
   &__info {
     width: 100%;
@@ -10,6 +14,21 @@
     &--description {
       background-color: rgb(99, 214, 218);
       width: 70%;
+    }
+  }
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+    width: 50%;
+    margin: 1rem auto;
+
+    &--arrow {
+      display: block;
+    }
+    &--amount {
+      margin: auto;
+      font-size: large;
     }
   }
 }
