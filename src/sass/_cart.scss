@@ -1,0 +1,27 @@
+#cart {
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  width: 15%;
+  top: 20%;
+  right: 5%;
+}
+.cart {
+  &__header {
+    height: 10vh;
+    background-color: $color_primary_light;
+    &-logo {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 30%;
+    }
+  }
+  &__body {
+    // height: 0vh;
+    height: 65vh;
+    transition: all 0.2s;
+  }
+  :hover > &__body {
+    height: 65vh;
+  }
+}

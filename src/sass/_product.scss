@@ -3,19 +3,40 @@
   height: auto;
   padding: 3rem;
   margin-bottom: 5rem;
+  background-color: white;
 
   text-align: center;
   border-radius: 3%;
   display: inline-block;
 
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.35);
+
+  position: relative;
+
   &__image {
     max-width: 95%;
     max-height: 95%;
     display: block;
     border-radius: 3%;
   }
-  :hover {
-    transform: scale(1.5);
+
+  &__cart {
+    width: 100%;
+
+    &-box {
+      top: 50%;
+      left: 50%;
+      width: 40%;
+      transform: translate(-50%) translateY(-50%);
+      position: absolute;
+      border-radius: 50%;
+
+      opacity: 0;
+      transition: all 0.2s;
+    }
+  }
+
+  &:hover > &__cart-box {
+    opacity: 1;
   }
 }

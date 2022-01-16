@@ -1,0 +1,15 @@
+.cart_item {
+  padding: 3%;
+
+  &__info {
+    width: 100%;
+    display: flex;
+    &--image {
+      max-width: 30%;
+    }
+    &--description {
+      background-color: rgb(99, 214, 218);
+      width: 70%;
+    }
+  }
+}
