@@ -40,7 +40,7 @@ module.exports = {
       },
       //images
       {
-        test: /\.(svg|ico|png|webp|jpg|gif|jpeg|txt)$/,
+        test: /\.(svg|ico|png|webp|jpg|gif|jpeg|json)$/,
         type: "asset/resource",
       },
       //js for babel

@@ -1,22 +1,27 @@
-import products from "./products.txt";
+import _productsLocalJson from "./assets/products.json";
 
 export const state = {
   products: [],
 };
 
-export const loadProducts = function () {
+export const loadProducts = function (productsUpdatedListener) {
   const req = new XMLHttpRequest();
+  req.open("get", "./products.json", true);
 
-  req.onreadystatechange = function () {
-    if (req.readyState == 4) {
-      if (req.status == 200) {
-        console.log(req.response);
-      }
-      if (req.status == 400) {
-        console.log("file not found");
-      }
+  req.onload = function () {
+    if (req.status == 200) {
+      state.products = JSON.parse(req.responseText);
+      productsUpdatedListener();
+    }
+    if (req.status == 400) {
+      console.log("file not found");
     }
   };
-  req.open("get", "products.txt", true);
+  req.onerror = function () {
+    //TODO
+  };
+
   req.send();
+
+  console.log("finished");
 };
