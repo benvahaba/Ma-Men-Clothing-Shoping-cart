@@ -2,6 +2,7 @@ import _productsLocalJson from "./assets/products.json";
 
 export const state = {
   products: [],
+  cartProducts: new Set(),
 };
 
 export const loadProducts = function (productsUpdatedListener) {
@@ -24,4 +25,9 @@ export const loadProducts = function (productsUpdatedListener) {
   req.send();
 
   console.log("finished");
+};
+export const addProductToCart = function (DOMProduct) {
+  if (state.cartProducts.has(DOMProduct)) {
+  } else {
+  }
 };

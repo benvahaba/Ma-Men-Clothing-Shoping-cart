@@ -3,72 +3,72 @@
     "id": 1,
     "title": "White stylish sweater",
     "price": 299.99,
-    "image": "./fakeDB.json/assets/clothing/2632403805_6_1_1.jpg"
+    "image": "./2632403805_6_1_1.jpg"
   },
   {
     "id": 2,
     "title": "Black stylish sweater",
     "price": 49.99,
-    "image": "./fakeDB.json/assets/clothing/6771407800_6_1_1.jpg"
+    "image": "./6771407800_6_1_1.jpg"
   },
   {
     "id": 3,
     "title": "Cool Peggy Bundy sunglasses",
     "price": 39.99,
-    "image": "./fakeDB.json/assets/clothing/ezgif-7-5fecef2611.jpg"
+    "image": "./ezgif-7-5fecef2611.jpg"
   },
   {
     "id": 4,
     "title": "Button down dark blue sweater",
     "price": 89.99,
-    "image": "./fakeDB.json/assets/clothing/ezgif-7-8be437ed0e.jpg"
+    "image": "./ezgif-7-8be437ed0e.jpg"
   },
   {
     "id": 5,
     "title": "Long cool-guy winter coat",
     "price": 499.99,
-    "image": "./fakeDB.json/assets/clothing/ezgif-7-9af305e781.jpg"
+    "image": "./ezgif-7-9af305e781.jpg"
   },
   {
     "id": 6,
     "title": "Black turtle neck winter shirt",
     "price": 299.99,
-    "image": "./fakeDB.json/assets/clothing/ezgif-7-81e74a915e.jpg"
+    "image": "./ezgif-7-81e74a915e.jpg"
   },
   {
     "id": 7,
     "title": "Black polyester sleeves black jacket",
     "price": 449.99,
-    "image": "./fakeDB.json/assets/clothing/ezgif-7-194f1769bb.jpg"
+    "image": "./ezgif-7-194f1769bb.jpg"
   },
   {
     "id": 8,
     "title": "Good boy Blue sweater to impress your mother",
     "price": 39.99,
-    "image": "./fakeDB.json/assets/clothing/ezgif-7-57500c769d.jpg"
+    "image": "./ezgif-7-57500c769d.jpg"
   },
   {
     "id": 9,
     "title": "Pink awesome sweater",
     "price": 229.99,
-    "image": "./fakeDB.json/assets/clothing/ezgif-7-5635011e38.jpg"
+    "image": "./ezgif-7-5635011e38.jpg"
   },
   {
     "id": 10,
     "title": "Casual buttoned down white blue stripes shirt",
     "price": 159.99,
-    "image": "./fakeDB.json/assets/clothing/ezgif-7-d4790b5529.jpg"
+    "image": "./ezgif-7-d4790b5529.jpg"
   },
   {
     "id": 11,
     "title": "Light brown jacket",
     "price": 200,
-    "image": "./fakeDB.json/assets/clothing/ezgif-7-e4e02e5070.jpg"
+    "image": "./ezgif-7-e4e02e5070.jpg"
   },
   {
     "id": 12,
     "title": "off-white jacket",
     "price": 99.99,
-    "image": "./fakeDB.json/assets/clothing/ezgif-7-fc21d4918c.jpg"
+    "image": "./ezgif-7-fc21d4918c.jpg"
   }
 ]
