@@ -1,34 +1,33 @@
 .cart_item {
+  display: flex;
+
   padding: 3%;
+  margin: 5% 3%;
   border-radius: 5%;
-  padding: 3%;
-  margin: 3%;
+
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
 
   &__info {
-    width: 100%;
     display: flex;
     &--image {
       max-width: 30%;
     }
     &--description {
-      background-color: rgb(99, 214, 218);
       width: 70%;
     }
   }
   &__controls {
     display: flex;
+    width: 15%;
+    flex-direction: column;
     justify-content: space-between;
-    height: 3rem;
-    width: 50%;
-    margin: 1rem auto;
 
-    &--arrow {
+    &--quantity {
       display: block;
-    }
-    &--amount {
-      margin: auto;
-      font-size: large;
+      object-fit: cover;
+      text-align: center;
+
+      object-fit: contain;
     }
   }
 }

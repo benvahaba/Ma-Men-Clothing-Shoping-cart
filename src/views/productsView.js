@@ -24,10 +24,19 @@ class ProductsView {
       return;
 
     const markup = this._generateMarkup(productArr);
-
     const _DOMParent = document.getElementById("container");
     _DOMParent.insertAdjacentHTML("afterbegin", markup);
+
+    this._DOMProducts = document.querySelectorAll(".product");
+    return this;
   }
+
+  addListenerToProducts(listener) {
+    this._DOMProducts.forEach((DOMProduct) => {
+      DOMProduct.addEventListener("click", listener);
+    });
+  }
+
   _generateMarkup(productArr) {
     const markup = productArr.reduce((acc, product) => {
       acc += `

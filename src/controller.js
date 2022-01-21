@@ -4,19 +4,23 @@ import cart from "./assets/cart.png";
 
 import * as model from "./model.js";
 import ProductsView from "./views/productsView";
+import CartProductView from "./views/cartProductView";
 
-let _DOMProducts;
 model.loadProducts(renderAndAddListeners);
 
 function renderAndAddListeners() {
-  ProductsView.render(model.state.products);
-  _DOMProducts = document.querySelectorAll(".product");
-  console.log(_DOMProducts);
-  _DOMProducts.forEach((DOMProduct) => {
-    console.log("adding click listener");
-
-    DOMProduct.addEventListener("click", ProductListener);
-  });
+  ProductsView.render(model.state.products).addListenerToProducts(
+    productListener
+  );
 }
 
-function ProductListener(product) {}
+function productListener(product) {
+  model.addProductToCart(product, updateCartProduct, renderCartProduct);
+}
+
+function updateCartProduct(product) {
+  CartProductView.updateCartProduct(product);
+}
+function renderCartProduct(product) {
+  CartProductView.renderCartProduct(product);
+}

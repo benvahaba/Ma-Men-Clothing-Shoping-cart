@@ -21,11 +21,12 @@
     // opacity: 0;
     height: 65vh;
     background-color: white;
+    overflow-y: scroll;
 
     transition: all 0.5s;
   }
   :hover > &__body {
-    // opacity: 1;
+    opacity: 1;
     height: 65vh;
   }
 }

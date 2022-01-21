@@ -2,7 +2,7 @@ import _productsLocalJson from "./assets/products.json";
 
 export const state = {
   products: [],
-  cartProducts: new Set(),
+  cartProducts: new Map(),
 };
 
 export const loadProducts = function (productsUpdatedListener) {
@@ -23,11 +23,24 @@ export const loadProducts = function (productsUpdatedListener) {
   };
 
   req.send();
-
-  console.log("finished");
 };
-export const addProductToCart = function (DOMProduct) {
-  if (state.cartProducts.has(DOMProduct)) {
+export const addProductToCart = function (
+  DOMProduct,
+  updateCartProduct,
+  renderCartProduct
+) {
+  const id = DOMProduct.currentTarget.getAttribute("data-id");
+
+  if (state.cartProducts.has(id)) {
+    // product exists in cart and needs to be updated
+    state.cartProducts.get(id).amount++;
+    updateCartProduct(state.cartProducts.get(id));
   } else {
+    //product was not at cart and needs to be renderd
+    const productInfo = state.products.find((product) => product.id == id);
+
+    productInfo.amount = 1;
+    state.cartProducts.set(id, productInfo);
+    renderCartProduct(productInfo);
   }
 };
