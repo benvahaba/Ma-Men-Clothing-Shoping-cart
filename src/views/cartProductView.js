@@ -8,8 +8,16 @@ class CartProductView {
   }
   updateCartProduct(param) {
     const selectors = document.querySelectorAll(".cart_item");
-    //Array.from(selectors).find(selector => selector. === nodeRefToFind);
+    const cartProduct = Array.from(selectors).find(
+      (selector) => selector.dataset.id == param.id
+    );
+
+    const amountElement = cartProduct.getElementsByClassName(
+      "cart_item__controls--amount"
+    );
+    amountElement.item(0).innerHTML = param.amount;
   }
+
   renderCartProduct(param) {
     const markup = this._markupGen(param);
     this._DOMParent.insertAdjacentHTML("afterbegin", markup);
@@ -35,7 +43,7 @@ class CartProductView {
         src="./plus.png"
         class="cart_item__controls--quantity"
       />
-      <p class="cart_item__controls--quantity">${params.amount}</p>
+      <p class="cart_item__controls--quantity cart_item__controls--amount">${params.amount}</p>
       <img
         src="./minus.png"
         class="cart_item__controls--quantity"
