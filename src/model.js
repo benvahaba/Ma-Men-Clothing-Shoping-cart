@@ -33,8 +33,7 @@ export const addProductToCart = function (
 
   if (state.cartProducts.has(id)) {
     // product exists in cart and needs to be updated
-    state.cartProducts.get(id).amount++;
-    updateCartProduct(state.cartProducts.get(id));
+    addProductAmountAtCart(id, updateCartProduct);
   } else {
     //product was not at cart and needs to be renderd
     const productInfo = state.products.find((product) => product.id == id);
@@ -44,3 +43,15 @@ export const addProductToCart = function (
     renderCartProduct(productInfo);
   }
 };
+export function addProductAmountAtCart(id, updateCartProduct) {
+  state.cartProducts.get(id).amount++;
+  updateCartProduct(state.cartProducts.get(id));
+}
+export function reduceProductAmountAtCart(id, updateCartProduct) {
+  state.cartProducts.get(id).amount--;
+  const tempCartProduct = state.cartProducts.get(id);
+  if (tempCartProduct.amount == 0) {
+    state.cartProducts.delete(id);
+  }
+  updateCartProduct(tempCartProduct);
+}

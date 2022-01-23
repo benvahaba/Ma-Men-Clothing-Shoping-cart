@@ -6,21 +6,39 @@ import * as model from "./model.js";
 import ProductsView from "./views/productsView";
 import CartProductView from "./views/cartProductView";
 
-model.loadProducts(renderAndAddListeners);
+const init = function () {
+  //load products from DB, render and listen to their click events
+  model.loadProducts(renderProductsAndAddListeners);
+};
+init();
 
-function renderAndAddListeners() {
+function renderProductsAndAddListeners() {
   ProductsView.render(model.state.products).addListenerToProducts(
     productListener
   );
 }
 
 function productListener(product) {
-  model.addProductToCart(product, updateCartProduct, renderCartProduct);
+  model.addProductToCart(
+    product,
+    CartProductView.updateCartProduct,
+    renderCartProduct
+  );
 }
 
-function updateCartProduct(product) {
-  CartProductView.updateCartProduct(product);
-}
 function renderCartProduct(product) {
-  CartProductView.renderCartProduct(product);
+  CartProductView.renderCartProduct(product, addOrReduceProductAmountListener);
+}
+function addOrReduceProductAmountListener(element) {
+  if (element.target.className.includes("btn__amount--add")) {
+    model.addProductAmountAtCart(
+      element.target.closest(".cart_item").dataset.id,
+      CartProductView.updateCartProduct
+    );
+  } else if (element.target.className.includes("btn__amount--reduce")) {
+    model.reduceProductAmountAtCart(
+      element.target.closest(".cart_item").dataset.id,
+      CartProductView.updateCartProduct
+    );
+  }
 }

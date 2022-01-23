@@ -7,10 +7,17 @@ class CartProductView {
     this._DOMParent = document.getElementById("cart-body");
   }
   updateCartProduct(param) {
+    //getting cart_item elements
     const selectors = document.querySelectorAll(".cart_item");
+
+    //find the spesific cart-item
     const cartProduct = Array.from(selectors).find(
       (selector) => selector.dataset.id == param.id
     );
+    if (param.amount == 0) {
+      cartProduct.remove();
+      return;
+    }
 
     const amountElement = cartProduct.getElementsByClassName(
       "cart_item__controls--amount"
@@ -18,9 +25,14 @@ class CartProductView {
     amountElement.item(0).innerHTML = param.amount;
   }
 
-  renderCartProduct(param) {
+  renderCartProduct(param, addOrRemoveListener) {
     const markup = this._markupGen(param);
+
     this._DOMParent.insertAdjacentHTML("afterbegin", markup);
+    this._DOMParent.firstElementChild.addEventListener(
+      "click",
+      addOrRemoveListener
+    );
   }
 
   _refreshSum() {}
@@ -41,12 +53,13 @@ class CartProductView {
     <div class="cart_item__controls">
       <img
         src="./plus.png"
-        class="cart_item__controls--quantity"
+        class="cart_item__controls--quantity btn__amount--add"
+       
       />
       <p class="cart_item__controls--quantity cart_item__controls--amount">${params.amount}</p>
       <img
         src="./minus.png"
-        class="cart_item__controls--quantity"
+        class="cart_item__controls--quantity  btn__amount--reduce"
       />
     </div>
   </div>
