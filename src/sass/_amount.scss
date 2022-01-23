@@ -1,0 +1,14 @@
+.amount {
+  display: flex;
+  width: 15%;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__quantity {
+    display: block;
+    object-fit: cover;
+    text-align: center;
+
+    object-fit: contain;
+  }
+}

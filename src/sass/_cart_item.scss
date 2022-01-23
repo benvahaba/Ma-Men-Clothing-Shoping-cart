@@ -16,18 +16,4 @@
       width: 70%;
     }
   }
-  &__controls {
-    display: flex;
-    width: 15%;
-    flex-direction: column;
-    justify-content: space-between;
-
-    &--quantity {
-      display: block;
-      object-fit: cover;
-      text-align: center;
-
-      object-fit: contain;
-    }
-  }
 }

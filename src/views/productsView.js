@@ -39,24 +39,43 @@ class ProductsView {
 
   _generateMarkup(productArr) {
     const markup = productArr.reduce((acc, product) => {
-      acc += `
-      <div class="product" data-id="${product.id}">
-     <img
-       class="product__image"
-       src="${product.image}"
-       alt="logo"
-     />
- 
-     <h2>${product.title}</h2>
-     <p>
-       Price:
-       <span class="product__price-currency">$</span>
-       <span class="product__price"> ${product.price} </span>
-     </p>
-     <div class="product__cart-box">
-       <img class="product__cart" src="./cart.png" alt="cart" />
-     </div>
-   </div> `;
+      acc += `<div class="product" data-id="${product.id}">
+      <img
+        class="product__image"
+        src="${product.image}"
+        alt="logo"
+      />
+
+      <h2>black shirt</h2>
+      <p>
+        Price:
+        <span class="product__price-currency">$</span>
+        <span class="product__price">${product.price} </span>
+      </p>
+      <div class="product__hover">
+        <div class="product__hover--inner-box">
+          <div class="product__hover--cart">
+            <img
+              src="./cart.png"
+              class="product__hover--image"
+              alt="cart"
+            />
+          </div>
+
+          <div class="product__hover--amount-box amount">
+            <img
+              src="./plus.png"
+              class="amount__quantity btn__amount--add"
+            />
+            <p class="amount__quantity cart_item__controls--amount">1</p>
+            <img
+              src="./minus.png"
+              class="amount__quantity btn__amount--reduce"
+            />
+          </div>
+        </div>
+      </div>
+    </div> `;
       return acc;
     }, "");
     return markup;
@@ -64,3 +83,62 @@ class ProductsView {
 }
 
 export default new ProductsView();
+
+{
+  /* <div class="product" data-id="3">
+        <img
+          class="product__image"
+          src="./assets/clothing/2632403805_6_1_1.jpg"
+          alt="logo"
+        />
+
+        <h2>black shirt</h2>
+        <p>
+          Price:
+          <span class="product__price-currency">$</span>
+          <span class="product__price"> 300 </span>
+        </p>
+        <div class="product__hover">
+          <div class="product__hover--inner-box">
+            <div class="product__hover--cart">
+              <img
+                src="./assets/cart.png"
+                class="product__hover--image"
+                alt="cart"
+              />
+            </div>
+
+            <div class="product__hover--amount-box amount">
+              <img
+                src="./assets/plus.png"
+                class="amount__quantity btn__amount--add"
+              />
+              <p class="amount__quantity cart_item__controls--amount">0</p>
+              <img
+                src="./assets/minus.png"
+                class="amount__quantity btn__amount--reduce"
+              />
+            </div>
+          </div>
+        </div>
+      </div> */
+}
+
+//     `
+//     <div class="product" data-id="${product.id}">
+//    <img
+//      class="product__image"
+//      src="${product.image}"
+//      alt="logo"
+//    />
+
+//    <h2>${product.title}</h2>
+//    <p>
+//      Price:
+//      <span class="product__price-currency">$</span>
+//      <span class="product__price"> ${product.price} </span>
+//    </p>
+//    <div class="product__cart-box">
+//      <img class="product__cart" src="./cart.png" alt="cart" />
+//    </div>
+//  </div> `

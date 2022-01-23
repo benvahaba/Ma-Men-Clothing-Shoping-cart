@@ -50,16 +50,16 @@ class CartProductView {
         <p class="cart-produce__description--price">$${params.price}</p>
       </div>
     </div>
-    <div class="cart_item__controls">
+    <div class="amount">
       <img
         src="./plus.png"
-        class="cart_item__controls--quantity btn__amount--add"
+        class="amount__quantity btn__amount--add"
        
       />
-      <p class="cart_item__controls--quantity cart_item__controls--amount">${params.amount}</p>
+      <p class="amount__quantity cart_item__controls--amount">${params.amount}</p>
       <img
         src="./minus.png"
-        class="cart_item__controls--quantity  btn__amount--reduce"
+        class="amount__quantity  btn__amount--reduce"
       />
     </div>
   </div>

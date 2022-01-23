@@ -20,23 +20,54 @@
     border-radius: 3%;
   }
 
-  &__cart {
+  &__hover {
     width: 100%;
+    height: 100%;
 
-    &-box {
-      top: 50%;
-      left: 50%;
-      width: 40%;
-      transform: translate(-50%) translateY(-50%);
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 3%;
+    transition: all 0.2s;
+
+    &--inner-box {
+      display: flex;
+      justify-content: space-between;
+      height: 30%;
+      width: 100%;
       position: absolute;
-      border-radius: 50%;
+      transform: translateY(-50%);
+      top: 50%;
+      background-color: white;
+    }
 
-      opacity: 0;
-      transition: all 0.2s;
+    &--cart {
+      width: 80%;
+
+      background-color: white;
+    }
+    &--image {
+      padding: 1rem;
+
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+    &__amount-box {
+      width: 50%;
+      height: 20%;
+      top: 20%;
+      position: absolute;
+      background-color: white;
     }
   }
 
-  &:hover > &__cart-box {
+  &:hover > &__hover {
     opacity: 1;
   }
 }
