@@ -12,6 +12,7 @@ export const loadProducts = function (productsUpdatedListener) {
   req.onload = function () {
     if (req.status == 200) {
       state.products = JSON.parse(req.responseText);
+      state.products.forEach((product) => (product.amount = 1));
       productsUpdatedListener();
     }
     if (req.status == 400) {
@@ -25,12 +26,10 @@ export const loadProducts = function (productsUpdatedListener) {
   req.send();
 };
 export const addProductToCart = function (
-  DOMProduct,
+  id,
   updateCartProduct,
   renderCartProduct
 ) {
-  const id = DOMProduct.currentTarget.getAttribute("data-id");
-
   if (state.cartProducts.has(id)) {
     // product exists in cart and needs to be updated
     addProductAmountAtCart(id, updateCartProduct);
@@ -54,4 +53,19 @@ export function reduceProductAmountAtCart(id, updateCartProduct) {
     state.cartProducts.delete(id);
   }
   updateCartProduct(tempCartProduct);
+}
+export function addProductAmount(id, updateProduct) {
+  let product = state.products.find((product) => product.id == id);
+
+  product.amount++;
+  updateProduct(product);
+}
+export function reduceProductAmount(id, updateProduct) {
+  let product = state.products.find((product) => product.id == id);
+
+  if (product.amount == 1) return;
+
+  product.amount--;
+
+  updateProduct(product);
 }

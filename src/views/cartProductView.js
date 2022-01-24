@@ -19,9 +19,10 @@ class CartProductView {
       return;
     }
 
-    const amountElement = cartProduct.getElementsByClassName(
-      "cart_item__controls--amount"
-    );
+    const amountElement =
+      cartProduct.getElementsByClassName("btn__amount--sum");
+
+    console.log("agggg", amountElement);
     amountElement.item(0).innerHTML = param.amount;
   }
 
@@ -56,7 +57,7 @@ class CartProductView {
         class="amount__quantity btn__amount--add"
        
       />
-      <p class="amount__quantity cart_item__controls--amount">${params.amount}</p>
+      <p class="amount__quantity btn__amount ">${params.amount}</p>
       <img
         src="./minus.png"
         class="amount__quantity  btn__amount--reduce"

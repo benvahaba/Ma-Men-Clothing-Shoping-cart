@@ -13,7 +13,8 @@ import productPictures12 from "../assets/clothing/ezgif-7-fc21d4918c.jpg";
 import cart from "../assets/cart.png";
 
 class ProductsView {
-  render(productArr, render = true) {
+  constructor() {}
+  render(productArr) {
     //in case of errors
 
     if (
@@ -28,7 +29,16 @@ class ProductsView {
     _DOMParent.insertAdjacentHTML("afterbegin", markup);
 
     this._DOMProducts = document.querySelectorAll(".product");
+
     return this;
+  }
+  updateProduct(product) {
+    const element = Array.from(this._DOMProducts).find(
+      (node) => node.dataset.id == product.id
+    );
+
+    element.getElementsByClassName("btn__amount--sum")[0].innerHTML =
+      product.amount;
   }
 
   addListenerToProducts(listener) {
@@ -46,7 +56,7 @@ class ProductsView {
         alt="logo"
       />
 
-      <h2>black shirt</h2>
+      <h2>${product.title}</h2>
       <p>
         Price:
         <span class="product__price-currency">$</span>
@@ -67,7 +77,8 @@ class ProductsView {
               src="./plus.png"
               class="amount__quantity btn__amount--add"
             />
-            <p class="amount__quantity cart_item__controls--amount">1</p>
+            <p class="amount__quantity btn__amount--sum
+            ">1</p>
             <img
               src="./minus.png"
               class="amount__quantity btn__amount--reduce"
@@ -83,62 +94,3 @@ class ProductsView {
 }
 
 export default new ProductsView();
-
-{
-  /* <div class="product" data-id="3">
-        <img
-          class="product__image"
-          src="./assets/clothing/2632403805_6_1_1.jpg"
-          alt="logo"
-        />
-
-        <h2>black shirt</h2>
-        <p>
-          Price:
-          <span class="product__price-currency">$</span>
-          <span class="product__price"> 300 </span>
-        </p>
-        <div class="product__hover">
-          <div class="product__hover--inner-box">
-            <div class="product__hover--cart">
-              <img
-                src="./assets/cart.png"
-                class="product__hover--image"
-                alt="cart"
-              />
-            </div>
-
-            <div class="product__hover--amount-box amount">
-              <img
-                src="./assets/plus.png"
-                class="amount__quantity btn__amount--add"
-              />
-              <p class="amount__quantity cart_item__controls--amount">0</p>
-              <img
-                src="./assets/minus.png"
-                class="amount__quantity btn__amount--reduce"
-              />
-            </div>
-          </div>
-        </div>
-      </div> */
-}
-
-//     `
-//     <div class="product" data-id="${product.id}">
-//    <img
-//      class="product__image"
-//      src="${product.image}"
-//      alt="logo"
-//    />
-
-//    <h2>${product.title}</h2>
-//    <p>
-//      Price:
-//      <span class="product__price-currency">$</span>
-//      <span class="product__price"> ${product.price} </span>
-//    </p>
-//    <div class="product__cart-box">
-//      <img class="product__cart" src="./cart.png" alt="cart" />
-//    </div>
-//  </div> `

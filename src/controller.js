@@ -5,6 +5,7 @@ import cart from "./assets/cart.png";
 import * as model from "./model.js";
 import ProductsView from "./views/productsView";
 import CartProductView from "./views/cartProductView";
+import productsView from "./views/productsView";
 
 const init = function () {
   //load products from DB, render and listen to their click events
@@ -18,12 +19,28 @@ function renderProductsAndAddListeners() {
   );
 }
 
-function productListener(product) {
-  model.addProductToCart(
-    product,
-    CartProductView.updateCartProduct,
-    renderCartProduct
-  );
+function productListener(element) {
+  if (element.target.className.includes("btn__amount--add")) {
+    model.addProductAmount(
+      element.target.closest(".product").dataset.id,
+      updateProduct
+    );
+  } else if (element.target.className.includes("btn__amount--reduce")) {
+    model.reduceProductAmount(
+      element.target.closest(".product").dataset.id,
+      updateProduct
+    );
+  } else if (element.target.className === "product__hover--image") {
+    const id = element.currentTarget.getAttribute("data-id");
+    model.addProductToCart(
+      id,
+      CartProductView.updateCartProduct,
+      renderCartProduct
+    );
+  }
+}
+function updateProduct(product) {
+  productsView.updateProduct(product);
 }
 
 function renderCartProduct(product) {
