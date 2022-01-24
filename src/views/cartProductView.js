@@ -1,3 +1,4 @@
+// static import for webpack
 import plus from "../assets/plus.png";
 import minus from "../assets/minus.png";
 import close from "../assets/close.png";
@@ -6,6 +7,7 @@ class CartProductView {
   constructor() {
     this._DOMParent = document.getElementById("cart-body");
   }
+
   updateCartProduct(param) {
     //getting cart_item elements
     const selectors = document.querySelectorAll(".cart_item");
@@ -22,8 +24,7 @@ class CartProductView {
     const amountElement =
       cartProduct.getElementsByClassName("btn__amount--sum");
 
-    console.log("agggg", amountElement);
-    amountElement.item(0).innerHTML = param.amount;
+    amountElement[0].innerHTML = param.amount;
   }
 
   renderCartProduct(param, addOrRemoveListener) {
@@ -57,7 +58,7 @@ class CartProductView {
         class="amount__quantity btn__amount--add"
        
       />
-      <p class="amount__quantity btn__amount ">${params.amount}</p>
+      <p class="amount__quantity btn__amount--sum ">${params.amount}</p>
       <img
         src="./minus.png"
         class="amount__quantity  btn__amount--reduce"

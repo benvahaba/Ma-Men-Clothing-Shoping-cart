@@ -17,34 +17,42 @@ export const loadProducts = function (productsUpdatedListener) {
     }
     if (req.status == 400) {
       console.log("file not found");
+      //todo throw and render error
     }
   };
   req.onerror = function () {
-    //TODO
+    console.log("file not found");
+    //todo throw and render error
   };
 
   req.send();
 };
 export const addProductToCart = function (
   id,
+  updateProduct,
   updateCartProduct,
   renderCartProduct
 ) {
+  const product = state.products.find((product) => product.id == id);
   if (state.cartProducts.has(id)) {
     // product exists in cart and needs to be updated
-    addProductAmountAtCart(id, updateCartProduct);
+    state.cartProducts.get(id).amount += product.amount;
+
+    updateCartProduct(state.cartProducts.get(id));
   } else {
     //product was not at cart and needs to be renderd
-    const productInfo = state.products.find((product) => product.id == id);
 
-    productInfo.amount = 1;
-    state.cartProducts.set(id, productInfo);
-    renderCartProduct(productInfo);
+    state.cartProducts.set(id, { ...product });
+    renderCartProduct(state.cartProducts.get(id));
   }
+  product.amount = 1;
+  updateProduct(product);
 };
 export function addProductAmountAtCart(id, updateCartProduct) {
   state.cartProducts.get(id).amount++;
-  updateCartProduct(state.cartProducts.get(id));
+  const tempCartProduct = state.cartProducts.get(id);
+
+  updateCartProduct(tempCartProduct);
 }
 export function reduceProductAmountAtCart(id, updateCartProduct) {
   state.cartProducts.get(id).amount--;

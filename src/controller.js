@@ -1,3 +1,4 @@
+// static import for webpack
 import style from "./sass/main.scss";
 import logo from "./assets/logo.png";
 import cart from "./assets/cart.png";
@@ -19,6 +20,7 @@ function renderProductsAndAddListeners() {
   );
 }
 
+// listen to product clicks.
 function productListener(element) {
   if (element.target.className.includes("btn__amount--add")) {
     model.addProductAmount(
@@ -32,8 +34,10 @@ function productListener(element) {
     );
   } else if (element.target.className === "product__hover--image") {
     const id = element.currentTarget.getAttribute("data-id");
+
     model.addProductToCart(
       id,
+      updateProduct,
       CartProductView.updateCartProduct,
       renderCartProduct
     );
@@ -44,9 +48,9 @@ function updateProduct(product) {
 }
 
 function renderCartProduct(product) {
-  CartProductView.renderCartProduct(product, addOrReduceProductAmountListener);
+  CartProductView.renderCartProduct(product, cartProductListener);
 }
-function addOrReduceProductAmountListener(element) {
+function cartProductListener(element) {
   if (element.target.className.includes("btn__amount--add")) {
     model.addProductAmountAtCart(
       element.target.closest(".cart_item").dataset.id,
