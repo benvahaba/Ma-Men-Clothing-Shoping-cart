@@ -13,12 +13,17 @@
   &__info {
     color: white;
     background-color: $color_primary_dark;
+    width: 95%;
+    height: 7vh;
+    margin: auto;
   }
 
   &__image {
     max-width: 95%;
     max-height: 95%;
     display: block;
+
+    margin: auto;
   }
 
   &__hover {
@@ -32,7 +37,7 @@
 
     opacity: 0;
     background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 3%;
+
     transition: all 0.2s;
 
     &--inner-box {
@@ -48,8 +53,6 @@
 
     &--cart {
       width: 80%;
-
-      background-color: white;
     }
     &--image {
       padding: 1rem;

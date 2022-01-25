@@ -12,7 +12,7 @@ const init = function () {
   model.loadProducts(renderProductsAndAddListeners);
   cartProductView.updateTotalSum(model.calculateTotalSum());
 };
-//init();
+init();
 
 function renderProductsAndAddListeners() {
   productsView
@@ -72,4 +72,3 @@ function cartProductListener(element) {
 function _getCartProductId(element) {
   return element.target.closest(".cart_item").dataset.id;
 }
-function totalSumListener() {}

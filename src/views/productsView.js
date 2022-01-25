@@ -55,13 +55,14 @@ class ProductsView {
         src="${product.image}"
         alt="logo"
       />
-
-      <h2>${product.title}</h2>
-      <p>
-        Price:
-        <span class="product__price-currency">$</span>
-        <span class="product__price">${product.price} </span>
-      </p>
+      <div class="product__info">
+        <h2>${product.title}</h2>
+        <p>
+          Price:
+          <span class="product__price-currency">$</span>
+          <span class="product__price">${product.price} </span>
+        </p>
+      </div>
       <div class="product__hover">
         <div class="product__hover--inner-box">
           <div class="product__hover--cart">
@@ -77,8 +78,7 @@ class ProductsView {
               src="./plus.png"
               class="amount__quantity btn__amount--add"
             />
-            <p class="amount__quantity btn__amount--sum
-            ">1</p>
+            <h2 class="amount__quantity btn__amount--sum">1</h2>
             <img
               src="./minus.png"
               class="amount__quantity btn__amount--reduce"
@@ -86,7 +86,7 @@ class ProductsView {
           </div>
         </div>
       </div>
-    </div> `;
+    </div>  `;
       return acc;
     }, "");
     return markup;
