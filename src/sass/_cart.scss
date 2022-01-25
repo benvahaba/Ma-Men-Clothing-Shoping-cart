@@ -1,32 +1,51 @@
 #cart {
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.3);
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   width: 15%;
   top: 20%;
   right: 5%;
+  max-height: 70vh;
 }
 .cart {
   &__header {
-    height: 10vh;
-    background-color: $color_primary;
+    height: 10%;
+    background-color: $color_primary_light;
     &-logo {
       display: block;
+      height: 90%;
       margin-left: auto;
       margin-right: auto;
-      width: 30%;
     }
   }
-  &__body {
-    // height: 0vh;
-    // opacity: 0;
-    height: 65vh;
-    background-color: white;
-    overflow-y: scroll;
 
-    transition: all 0.5s;
+  &__body {
+    height: 0vh;
+    background-color: $color_primary;
+    overflow-y: scroll;
   }
-  :hover > &__body {
-    opacity: 1;
-    height: 65vh;
+
+  &__tail {
+    height: 10vh;
+    padding: 5%;
+    background-color: $color_primary;
+
+    &--total-sum {
+      background-color: $color_primary_light;
+      text-align: center;
+
+      height: 100%;
+      margin: auto;
+      padding: 10%;
+    }
   }
+}
+.cart:hover > .cart__body {
+  height: 60vh;
+  background-color: $color_primary;
+  overflow-y: scroll;
+
+  transition: all 0.5s;
 }

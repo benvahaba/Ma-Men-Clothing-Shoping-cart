@@ -5,21 +5,38 @@ import close from "../assets/close.png";
 
 class CartProductView {
   constructor() {
-    this._DOMParent = document.getElementById("cart-body");
+    this._DOMCartBody = document.getElementById("cart-body");
+    this._DOMBuyButton = document.getElementById("btn__buy");
+    this._DOMTotalSum = document.getElementById("cart_total");
+
+    return this._instance;
+  }
+
+  static _instance;
+  static getInstance() {
+    if (this._instance === undefined) {
+      this._instance = new CartProductView();
+    }
+    return this._instance;
   }
 
   updateCartProduct(param) {
     //getting cart_item elements
-    const selectors = document.querySelectorAll(".cart_item");
+    const cartItems = document.querySelectorAll(".cart_item");
 
     //find the spesific cart-item
-    const cartProduct = Array.from(selectors).find(
-      (selector) => selector.dataset.id == param.id
+    const cartProduct = Array.from(cartItems).find(
+      (item) => item.dataset.id == param.id
     );
     if (param.amount == 0) {
       cartProduct.remove();
       return;
     }
+
+    const priceElement = cartProduct.getElementsByClassName(
+      "cart-produce__description--price"
+    );
+    priceElement[0].innerHTML = param.price.toFixed(1);
 
     const amountElement =
       cartProduct.getElementsByClassName("btn__amount--sum");
@@ -30,14 +47,20 @@ class CartProductView {
   renderCartProduct(param, addOrRemoveListener) {
     const markup = this._markupGen(param);
 
-    this._DOMParent.insertAdjacentHTML("afterbegin", markup);
-    this._DOMParent.firstElementChild.addEventListener(
+    this._DOMCartBody.insertAdjacentHTML("afterbegin", markup);
+    this._DOMCartBody.firstElementChild.addEventListener(
       "click",
       addOrRemoveListener
     );
   }
-
-  _refreshSum() {}
+  removeProduct(id) {
+    Array.from(this._DOMCartBody.querySelectorAll(".cart_item"))
+      .find((cartProduct) => cartProduct.dataset.id == id)
+      .remove();
+  }
+  updateTotalSum(sum) {
+    this._DOMTotalSum.innerHTML = sum.toFixed(1);
+  }
 
   _markupGen(params) {
     return `
@@ -49,7 +72,9 @@ class CartProductView {
       />
       <div class="cart_item__info--description">
         <p class="cart-produce__description--info">${params.title}</p>
-        <p class="cart-produce__description--price">$${params.price}</p>
+        <p class="cart-produce__description--price">${params.price.toFixed(
+          1
+        )}</p>
       </div>
     </div>
     <div class="amount">
@@ -64,10 +89,14 @@ class CartProductView {
         class="amount__quantity  btn__amount--reduce"
       />
     </div>
+    <img
+    src="./close.png"
+    class="cart_item--remove"
+  />
   </div>
     
     `;
   }
 }
 
-export default new CartProductView();
+export default CartProductView.getInstance();

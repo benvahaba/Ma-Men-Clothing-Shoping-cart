@@ -21,19 +21,20 @@
       <div class="toolbar__item">item</div>
     </div>
     <div id="container">
-      <!-- <div class="product" data-id="3">
+      <div class="product" data-id="${product.id}">
         <img
           class="product__image"
           src="./assets/clothing/2632403805_6_1_1.jpg"
           alt="logo"
         />
-
-        <h2>black shirt</h2>
-        <p>
-          Price:
-          <span class="product__price-currency">$</span>
-          <span class="product__price"> 300 </span>
-        </p>
+        <div class="product__info">
+          <h2>Black shirt</h2>
+          <p>
+            Price:
+            <span class="product__price-currency">$</span>
+            <span class="product__price">390 </span>
+          </p>
+        </div>
         <div class="product__hover">
           <div class="product__hover--inner-box">
             <div class="product__hover--cart">
@@ -49,7 +50,7 @@
                 src="./assets/plus.png"
                 class="amount__quantity btn__amount--add"
               />
-              <p class="amount__quantity cart_item__controls--amount">0</p>
+              <p class="amount__quantity btn__amount--sum">1</p>
               <img
                 src="./assets/minus.png"
                 class="amount__quantity btn__amount--reduce"
@@ -57,7 +58,7 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
     <div id="cart" class="cart">
       <div class="cart__header">
@@ -68,29 +69,39 @@
         />
       </div>
       <div class="cart__body" id="cart-body">
-        <!-- <div class="cart_item">
+        <!-- <div class="cart_item" data-id="${params.id}">
           <div class="cart_item__info">
             <img
               class="cart_item__info--image"
               src="./assets/clothing/2632403805_6_1_1.jpg"
             />
             <div class="cart_item__info--description">
-              <p class="cart-produce__description--info">blabla</p>
-              <p class="cart-produce__description--price"></p>
+              <p class="cart-produce__description--info">black shirt</p>
+              <p class="cart-produce__description--price">390</p>
             </div>
           </div>
-          <div class="cart_item__controls">
+          <div class="amount">
             <img
               src="./assets/plus.png"
-              class="cart_item__controls--quantity"
+              class="amount__quantity btn__amount--add"
+             
             />
-            <p class="cart_item__controls--quantity">0</p>
+            <p class="amount__quantity btn__amount--sum ">1</p>
             <img
               src="./assets/minus.png"
-              class="cart_item__controls--quantity"
+              class="amount__quantity  btn__amount--reduce"
             />
           </div>
-        </div> -->
+          <img
+          src="./assets/close.png"
+          class="cart_item--remove"
+        /> -->
+      </div>
+      <div class="cart__tail">
+        <div class="cart__tail--total-sum" id="btn__buy">
+          <h4>Total:</h4>
+          <p id="cart_total"></p>
+        </div>
       </div>
     </div>
   </body>

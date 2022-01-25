@@ -4,20 +4,20 @@ import logo from "./assets/logo.png";
 import cart from "./assets/cart.png";
 
 import * as model from "./model.js";
-import ProductsView from "./views/productsView";
-import CartProductView from "./views/cartProductView";
 import productsView from "./views/productsView";
+import cartProductView from "./views/cartProductView";
 
 const init = function () {
   //load products from DB, render and listen to their click events
   model.loadProducts(renderProductsAndAddListeners);
+  cartProductView.updateTotalSum(model.calculateTotalSum());
 };
-init();
+//init();
 
 function renderProductsAndAddListeners() {
-  ProductsView.render(model.state.products).addListenerToProducts(
-    productListener
-  );
+  productsView
+    .render(model.state.products)
+    .addListenerToProducts(productListener);
 }
 
 // listen to product clicks.
@@ -38,9 +38,10 @@ function productListener(element) {
     model.addProductToCart(
       id,
       updateProduct,
-      CartProductView.updateCartProduct,
+      cartProductView.updateCartProduct,
       renderCartProduct
     );
+    cartProductView.updateTotalSum(model.calculateTotalSum());
   }
 }
 function updateProduct(product) {
@@ -48,18 +49,27 @@ function updateProduct(product) {
 }
 
 function renderCartProduct(product) {
-  CartProductView.renderCartProduct(product, cartProductListener);
+  cartProductView.renderCartProduct(product, cartProductListener);
 }
 function cartProductListener(element) {
   if (element.target.className.includes("btn__amount--add")) {
     model.addProductAmountAtCart(
-      element.target.closest(".cart_item").dataset.id,
-      CartProductView.updateCartProduct
+      _getCartProductId(element),
+      cartProductView.updateCartProduct
     );
   } else if (element.target.className.includes("btn__amount--reduce")) {
     model.reduceProductAmountAtCart(
-      element.target.closest(".cart_item").dataset.id,
-      CartProductView.updateCartProduct
+      _getCartProductId(element),
+      cartProductView.updateCartProduct
     );
+  } else if (element.target.className.includes("cart_item--remove")) {
+    const id = _getCartProductId(element);
+    model.removeCartProduct(id);
+    cartProductView.removeProduct(id);
   }
+  cartProductView.updateTotalSum(model.calculateTotalSum());
 }
+function _getCartProductId(element) {
+  return element.target.closest(".cart_item").dataset.id;
+}
+function totalSumListener() {}

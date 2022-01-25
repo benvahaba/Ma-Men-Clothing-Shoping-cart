@@ -13,7 +13,19 @@
       max-width: 30%;
     }
     &--description {
+      padding: 3%;
       width: 70%;
     }
+  }
+  &--remove {
+    background-color: white;
+    box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.3);
+    position: absolute;
+    width: 1.5rem;
+    opacity: 0;
+    transition: all 0.2s;
+  }
+  &:hover > &--remove {
+    opacity: 1;
   }
 }

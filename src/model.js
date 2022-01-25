@@ -13,6 +13,7 @@ export const loadProducts = function (productsUpdatedListener) {
     if (req.status == 200) {
       state.products = JSON.parse(req.responseText);
       state.products.forEach((product) => (product.amount = 1));
+
       productsUpdatedListener();
     }
     if (req.status == 400) {
@@ -34,15 +35,21 @@ export const addProductToCart = function (
   renderCartProduct
 ) {
   const product = state.products.find((product) => product.id == id);
+
   if (state.cartProducts.has(id)) {
     // product exists in cart and needs to be updated
-    state.cartProducts.get(id).amount += product.amount;
+    const cartProduct = state.cartProducts.get(id);
+    //sum the cart product amount with the chosen product amount
+    cartProduct.amount += product.amount;
 
-    updateCartProduct(state.cartProducts.get(id));
+    _updateCartPrice(id);
+
+    updateCartProduct(cartProduct);
   } else {
     //product was not at cart and needs to be renderd
 
     state.cartProducts.set(id, { ...product });
+    _updateCartPrice(id);
     renderCartProduct(state.cartProducts.get(id));
   }
   product.amount = 1;
@@ -50,22 +57,21 @@ export const addProductToCart = function (
 };
 export function addProductAmountAtCart(id, updateCartProduct) {
   state.cartProducts.get(id).amount++;
-  const tempCartProduct = state.cartProducts.get(id);
-
-  updateCartProduct(tempCartProduct);
+  _updateCartPrice(id);
+  updateCartProduct(state.cartProducts.get(id));
 }
 export function reduceProductAmountAtCart(id, updateCartProduct) {
   state.cartProducts.get(id).amount--;
+  _updateCartPrice(id);
   const tempCartProduct = state.cartProducts.get(id);
-  if (tempCartProduct.amount == 0) {
-    state.cartProducts.delete(id);
-  }
+  if (tempCartProduct.amount == 0) state.cartProducts.delete(id);
+
   updateCartProduct(tempCartProduct);
 }
 export function addProductAmount(id, updateProduct) {
   let product = state.products.find((product) => product.id == id);
-
   product.amount++;
+
   updateProduct(product);
 }
 export function reduceProductAmount(id, updateProduct) {
@@ -76,4 +82,20 @@ export function reduceProductAmount(id, updateProduct) {
   product.amount--;
 
   updateProduct(product);
+}
+export function removeCartProduct(id) {
+  state.cartProducts.delete(id);
+}
+export function calculateTotalSum() {
+  const sum = Array.from(state.cartProducts).reduce((acc, cartProduct) => {
+    acc += cartProduct[1].price;
+    return acc;
+  }, 0);
+
+  return sum;
+}
+function _updateCartPrice(id) {
+  const productPrice = state.products.find((product) => product.id == id).price;
+  const cartProduct = state.cartProducts.get(id);
+  cartProduct.price = cartProduct.amount * productPrice;
 }
