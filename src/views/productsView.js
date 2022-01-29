@@ -1,6 +1,6 @@
 import productPictures1 from "../assets/clothing/2632403805_6_1_1.jpg";
 import productPictures2 from "../assets/clothing/6771407800_6_1_1.jpg";
-import productPictures3 from "../assets/clothing/ezgif-7-5fecef2611.jpg";
+import productPictures3 from "../assets/clothing/DSC_6397.jpg";
 import productPictures4 from "../assets/clothing/ezgif-7-8be437ed0e.jpg";
 import productPictures5 from "../assets/clothing/ezgif-7-9af305e781.jpg";
 import productPictures6 from "../assets/clothing/ezgif-7-81e74a915e.jpg";
@@ -9,7 +9,7 @@ import productPictures8 from "../assets/clothing/ezgif-7-57500c769d.jpg";
 import productPictures9 from "../assets/clothing/ezgif-7-5635011e38.jpg";
 import productPictures10 from "../assets/clothing/ezgif-7-d4790b5529.jpg";
 import productPictures11 from "../assets/clothing/ezgif-7-e4e02e5070.jpg";
-import productPictures12 from "../assets/clothing/ezgif-7-fc21d4918c.jpg";
+import productPictures12 from "../assets/clothing/ezgif-2-dad4ac7fe9.jpg";
 import cart from "../assets/cart.png";
 
 class ProductsView {

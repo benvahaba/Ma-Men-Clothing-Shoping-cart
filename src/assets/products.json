@@ -7,16 +7,17 @@
   },
   {
     "id": 2,
-    "title": "Black stylish sweater",
+    "title": "Black with orange srtipes",
     "price": 49.9,
-    "image": "./6771407800_6_1_1.jpg"
+    "image": "./DSC_6397.jpg"
   },
   {
     "id": 3,
-    "title": "Cool Peggy Bundy sunglasses",
-    "price": 39.9,
-    "image": "./ezgif-7-5fecef2611.jpg"
+    "title": " sweater Black stylish sweater",
+    "price": 49.9,
+    "image": "./6771407800_6_1_1.jpg"
   },
+
   {
     "id": 4,
     "title": "Button down dark blue sweater",
@@ -67,8 +68,8 @@
   },
   {
     "id": 12,
-    "title": "off-white jacket",
+    "title": "Grandmother's white jacket",
     "price": 99.9,
-    "image": "./ezgif-7-fc21d4918c.jpg"
+    "image": "./ezgif-2-dad4ac7fe9.jpg"
   }
 ]

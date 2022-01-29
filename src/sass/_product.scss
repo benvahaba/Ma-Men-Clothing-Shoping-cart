@@ -10,19 +10,19 @@
   display: inline-block;
 
   position: relative;
-  &__info {
-    color: white;
-    background-color: $color_primary_dark;
-    width: 95%;
-    height: 7vh;
-    margin: auto;
-  }
 
   &__image {
     max-width: 95%;
     max-height: 95%;
     display: block;
 
+    margin: auto;
+  }
+  &__info {
+    color: white;
+    background-color: $color_primary_dark;
+    width: 95%;
+    height: 7vh;
     margin: auto;
   }
 
