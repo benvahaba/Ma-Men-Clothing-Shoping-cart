@@ -2,6 +2,8 @@ $color_primary_dark: #3b5568;
 $color_primary: #526d81;
 $color_primary_light: #759dbd;
 
+$product_card__addtocart_width: 30%;
+
 $containers_shadow: rgba(0, 0, 0, 0.3);
 
 $toolbar_height: 15vh;
@@ -23,5 +25,10 @@ body {
   font-weight: 400;
   line-height: 1.6;
   position: relative;
-  font-size: medium;
+  font-size: 1.3em;
+}
+.hide {
+  opacity: 0;
+  width: 0%;
+  height: 0%;
 }

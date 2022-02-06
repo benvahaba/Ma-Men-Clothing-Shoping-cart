@@ -63,6 +63,7 @@ class CartProductView {
   }
 
   _markupGen(params) {
+    console.log(params);
     return `
     <div class="cart_item" data-id="${params.id}">
     <div class="cart_item__info">

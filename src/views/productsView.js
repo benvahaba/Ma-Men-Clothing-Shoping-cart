@@ -10,7 +10,7 @@ import productPictures9 from "../assets/clothing/ezgif-7-5635011e38.jpg";
 import productPictures10 from "../assets/clothing/ezgif-7-d4790b5529.jpg";
 import productPictures11 from "../assets/clothing/ezgif-7-e4e02e5070.jpg";
 import productPictures12 from "../assets/clothing/ezgif-2-dad4ac7fe9.jpg";
-import cart from "../assets/cart.png";
+import addToCart from "../assets/add-to-cart.png";
 
 class ProductsView {
   constructor() {}
@@ -67,13 +67,14 @@ class ProductsView {
         <div class="product__hover--inner-box">
           <div class="product__hover--cart">
             <img
-              src="./cart.png"
+              src="./add-to-cart.png"
               class="product__hover--image"
               alt="cart"
             />
+           
           </div>
 
-          <div class="product__hover--amount-box amount">
+          <div class="product__hover--amount-box amount hide">
             <img
               src="./plus.png"
               class="amount__quantity btn__amount--add"

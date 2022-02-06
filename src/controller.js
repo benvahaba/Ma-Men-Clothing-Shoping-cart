@@ -35,20 +35,16 @@ function productListener(element) {
   } else if (element.target.className === "product__hover--image") {
     const id = element.currentTarget.getAttribute("data-id");
 
-    model.addProductToCart(
-      id,
-      updateProduct,
-      cartProductView.updateCartProduct,
-      renderCartProduct
-    );
+    model.addProductToCart(id, _updateProduct, _renderCartProduct);
     cartProductView.updateTotalSum(model.calculateTotalSum());
   }
 }
-function updateProduct(product) {
+function _updateProduct(product) {
   productsView.updateProduct(product);
 }
 
-function renderCartProduct(product) {
+function _renderCartProduct(product) {
+  console.log(product);
   cartProductView.renderCartProduct(product, cartProductListener);
 }
 function cartProductListener(element) {

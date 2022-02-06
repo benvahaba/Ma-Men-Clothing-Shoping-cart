@@ -12,7 +12,9 @@ export const loadProducts = function (productsUpdatedListener) {
   req.onload = function () {
     if (req.status == 200) {
       state.products = JSON.parse(req.responseText);
-      state.products.forEach((product) => (product.amount = 1));
+      state.products.forEach(
+        (product) => ((product.amount = 0), (product.totalPrice = 0))
+      );
 
       productsUpdatedListener();
     }
@@ -31,28 +33,19 @@ export const loadProducts = function (productsUpdatedListener) {
 export const addProductToCart = function (
   id,
   updateProduct,
-  updateCartProduct,
   renderCartProduct
 ) {
   const product = state.products.find((product) => product.id == id);
 
-  if (state.cartProducts.has(id)) {
-    // product exists in cart and needs to be updated
-    const cartProduct = state.cartProducts.get(id);
-    //sum the cart product amount with the chosen product amount
-    cartProduct.amount += product.amount;
-
-    _updateCartPrice(id);
-
-    updateCartProduct(cartProduct);
-  } else {
-    //product was not at cart and needs to be renderd
-
-    state.cartProducts.set(id, { ...product });
-    _updateCartPrice(id);
-    renderCartProduct(state.cartProducts.get(id));
-  }
+  //product was not at cart and needs to be renderd
   product.amount = 1;
+
+  state.cartProducts.set(id, product);
+
+  renderCartProduct(state.cartProducts.get(id));
+
+  product.amount = 1;
+  _updateCartPrice(id);
   updateProduct(product);
 };
 export function addProductAmountAtCart(id, updateCartProduct) {
@@ -95,7 +88,6 @@ export function calculateTotalSum() {
   return sum;
 }
 function _updateCartPrice(id) {
-  const productPrice = state.products.find((product) => product.id == id).price;
   const cartProduct = state.cartProducts.get(id);
-  cartProduct.price = cartProduct.amount * productPrice;
+  cartProduct.totalPrice = cartProduct.amount * cartProduct.price;
 }

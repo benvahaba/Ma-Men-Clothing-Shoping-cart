@@ -12,8 +12,8 @@
   position: relative;
 
   &__image {
-    max-width: 95%;
-    max-height: 95%;
+    max-width: 100%;
+    max-height: 100%;
     display: block;
 
     margin: auto;
@@ -21,8 +21,8 @@
   &__info {
     color: white;
     background-color: $color_primary_dark;
-    width: 95%;
-    height: 7vh;
+    width: 100%;
+
     margin: auto;
   }
 
@@ -43,11 +43,15 @@
     &--inner-box {
       display: flex;
       justify-content: space-between;
-      height: 30%;
-      width: 100%;
+
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
       position: absolute;
       transform: translateY(-50%);
       top: 50%;
+      left: 50%;
+      transform: translate(-50%) translateY(-50%);
       background-color: white;
     }
 
@@ -55,12 +59,13 @@
       width: 80%;
     }
     &--image {
-      padding: 1rem;
-
+      position: absolute;
       display: block;
-      margin-left: auto;
-      margin-right: auto;
+      top: 50%;
+      left: 50%;
+
       width: 50%;
+      transform: translateX(-50%) translateY(-50%);
     }
     &__amount-box {
       width: 50%;
