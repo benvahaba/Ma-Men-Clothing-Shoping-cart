@@ -22,13 +22,14 @@ class CartProductView {
 
   updateCartProduct(param) {
     //getting cart_item elements
+
     const cartItems = document.querySelectorAll(".cart_item");
 
     //find the spesific cart-item
     const cartProduct = Array.from(cartItems).find(
-      (item) => item.dataset.id == param.id
+      (item) => item.dataset.id == param.productInfo.id
     );
-    if (param.amount == 0) {
+    if (param.productInfo.amount == 0) {
       cartProduct.remove();
       return;
     }
@@ -36,12 +37,12 @@ class CartProductView {
     const priceElement = cartProduct.getElementsByClassName(
       "cart-produce__description--price"
     );
-    priceElement[0].innerHTML = param.price.toFixed(1);
+    priceElement[0].innerHTML = param.totalPrice.toFixed(1);
 
     const amountElement =
       cartProduct.getElementsByClassName("btn__amount--sum");
 
-    amountElement[0].innerHTML = param.amount;
+    amountElement[0].innerHTML = param.productInfo.amount;
   }
 
   renderCartProduct(param, addOrRemoveListener) {
@@ -63,17 +64,18 @@ class CartProductView {
   }
 
   _markupGen(params) {
-    console.log(params);
     return `
-    <div class="cart_item" data-id="${params.id}">
+    <div class="cart_item" data-id="${params.productInfo.id}">
     <div class="cart_item__info">
       <img
         class="cart_item__info--image"
-        src="${params.image}"
+        src="${params.productInfo.image}"
       />
       <div class="cart_item__info--description">
-        <p class="cart-produce__description--info">${params.title}</p>
-        <p class="cart-produce__description--price">${params.price.toFixed(
+        <p class="cart-produce__description--info">${
+          params.productInfo.title
+        }</p>
+        <p class="cart-produce__description--price">${params.totalPrice.toFixed(
           1
         )}</p>
       </div>
@@ -84,7 +86,9 @@ class CartProductView {
         class="amount__quantity btn__amount--add"
        
       />
-      <p class="amount__quantity btn__amount--sum ">${params.amount}</p>
+      <p class="amount__quantity btn__amount--sum ">${
+        params.productInfo.amount
+      }</p>
       <img
         src="./minus.png"
         class="amount__quantity  btn__amount--reduce"

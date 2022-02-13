@@ -12,9 +12,7 @@ export const loadProducts = function (productsUpdatedListener) {
   req.onload = function () {
     if (req.status == 200) {
       state.products = JSON.parse(req.responseText);
-      state.products.forEach(
-        (product) => ((product.amount = 0), (product.totalPrice = 0))
-      );
+      state.products.forEach((product) => (product.amount = 0));
 
       productsUpdatedListener();
     }
@@ -40,21 +38,23 @@ export const addProductToCart = function (
   //product was not at cart and needs to be renderd
   product.amount = 1;
 
-  state.cartProducts.set(id, product);
+  state.cartProducts.set(id, { productInfo: product });
+  _updateCartPrice(id);
 
   renderCartProduct(state.cartProducts.get(id));
 
-  product.amount = 1;
-  _updateCartPrice(id);
   updateProduct(product);
 };
 export function addProductAmountAtCart(id, updateCartProduct) {
-  state.cartProducts.get(id).amount++;
+  console.log("model 1", state.cartProducts.get(id));
+  state.cartProducts.get(id).productInfo.amount++;
+
   _updateCartPrice(id);
+  console.log("model 2", state.cartProducts.get(id));
   updateCartProduct(state.cartProducts.get(id));
 }
 export function reduceProductAmountAtCart(id, updateCartProduct) {
-  state.cartProducts.get(id).amount--;
+  state.cartProducts.get(id).productInfo.amount--;
   _updateCartPrice(id);
   const tempCartProduct = state.cartProducts.get(id);
   if (tempCartProduct.amount == 0) state.cartProducts.delete(id);
@@ -81,7 +81,7 @@ export function removeCartProduct(id) {
 }
 export function calculateTotalSum() {
   const sum = Array.from(state.cartProducts).reduce((acc, cartProduct) => {
-    acc += cartProduct[1].price;
+    acc += cartProduct[1].totalPrice;
     return acc;
   }, 0);
 
@@ -89,5 +89,7 @@ export function calculateTotalSum() {
 }
 function _updateCartPrice(id) {
   const cartProduct = state.cartProducts.get(id);
-  cartProduct.totalPrice = cartProduct.amount * cartProduct.price;
+
+  cartProduct.totalPrice =
+    cartProduct.productInfo.amount * cartProduct.productInfo.price;
 }

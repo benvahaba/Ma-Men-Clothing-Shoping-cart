@@ -44,7 +44,6 @@ function _updateProduct(product) {
 }
 
 function _renderCartProduct(product) {
-  console.log(product);
   cartProductView.renderCartProduct(product, cartProductListener);
 }
 function cartProductListener(element) {
